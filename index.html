@@ -299,7 +299,7 @@
                                 </div>
                                 
                                 <div class="form__group">
-                                    <button disabled class="btn btn--green" id="sendMail">Vennligst klikk robotsjekken ovenfor først &uarr;</button>
+                                    <button class="btn btn--green" id="sendMail">Vennligst klikk robotsjekken ovenfor først &uarr;</button>
                                 </div>
                                 <div class="form__group">
                                     <label for="small" class="form__radio-label margin-right--small">
@@ -407,6 +407,8 @@
             // self executing function here
             (function() {
                 document.getElementById('sendMail').click();
+
+                document.getElementById('sendMail').disabled = true;
             })();
     </script>
     </body>
