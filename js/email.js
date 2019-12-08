@@ -19,9 +19,11 @@ document.getElementById("sendMail").onclick = function() {
 
     email.send('gmail', 'template_Ciwq1uFb', mailParams, 'user_F6fLZcJlH0SR10L1co4pm')
       .then(res => {
+          console.log(res);
           alert('Takk for din bestilling!')
       })
       .catch(e => { 
+            console.log(e);
             if (e.status > 0) {
                 alert('Noko gjekk galt, prøv igjen eller kontakt oss via Facebook') 
             } else {
