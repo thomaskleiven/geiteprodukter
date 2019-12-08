@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: './js/email.js',
-    mode: 'production',
+    mode: 'development',
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),

@@ -1,10 +1,15 @@
-import * as email from 'emailjs-com';
+const email = require('emailjs-com');
 
-document.getElementById("sendMail").onclick = function() {
+document.getElementById("sendMail").onclick = function () { run(); };
+
+
+  function run() {
+
     const name = document.getElementById("name").value;
     const address = document.getElementById("email").value;
     const message = document.getElementById("message").value;
-
+    console.log('running')
+    
     if (!name || !address || !message || !document.getElementById('small').checked) return; 
 
     email.init('user_F6fLZcJlH0SR10L1co4pm');
@@ -30,7 +35,8 @@ document.getElementById("sendMail").onclick = function() {
                 alert('Takk for din bestilling!')
             }
         });
-};
+      }
+
 
 document.getElementById("small").addEventListener("change", function(e) {
     if (e.isTrigger)

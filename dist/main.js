@@ -1,2 +1,322 @@
-var email=function(e){var t={};function n(r){if(t[r])return t[r].exports;var s=t[r]={i:r,l:!1,exports:{}};return e[r].call(s.exports,s,s.exports,n),s.l=!0,s.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var s in e)n.d(r,s,function(t){return e[t]}.bind(null,s));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=1)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(2);t.EmailJSResponseStatus=r.EmailJSResponseStatus;var s=n(3),i=null,o="https://api.emailjs.com";function a(e,t,n){return void 0===n&&(n={}),new Promise((function(s,i){var o=new XMLHttpRequest;for(var a in o.addEventListener("load",(function(e){var t=new r.EmailJSResponseStatus(e.target);200===t.status||"OK"===t.text?s(t):i(t)})),o.addEventListener("error",(function(e){i(new r.EmailJSResponseStatus(e.target))})),o.open("POST",e,!0),n)o.setRequestHeader(a,n[a]);o.send(t)}))}function l(e){var t=document.getElementById("g-recaptcha-response");return t&&t.value&&(e["g-recaptcha-response"]=t.value),t=null,e}function u(e,t){i=e,o=t||"https://api.emailjs.com"}function c(e,t,n,r){var s={lib_version:"2.4.1",user_id:r||i,service_id:e,template_id:t,template_params:l(n)};return a(o+"/api/v1.0/email/send",JSON.stringify(s),{"Content-type":"application/json"})}function d(e,t,n,r){if("string"==typeof n&&(n=document.querySelector(n)),!n||"FORM"!==n.nodeName)throw"Expected the HTML form element or the style selector of form";s.UI.progressState(n);var l=new FormData(n);return l.append("lib_version","2.4.1"),l.append("service_id",e),l.append("template_id",t),l.append("user_id",r||i),a(o+"/api/v1.0/email/send-form",l).then((function(e){return s.UI.successState(n),e}),(function(e){return s.UI.errorState(n),Promise.reject(e)}))}t.init=u,t.send=c,t.sendForm=d,t.default={init:u,send:c,sendForm:d}},function(e,t,n){"use strict";n.r(t);var r=n(0);document.getElementById("sendMail").onclick=function(){var e=document.getElementById("name").value,t=document.getElementById("email").value,n=document.getElementById("message").value;if(e&&t&&n&&document.getElementById("small").checked){r.init("user_F6fLZcJlH0SR10L1co4pm");var s={from_name:e,email:t,subject:"Ny bestilling fra: "+e,message_html:n};console.log("sending mail"),r.send("gmail","template_Ciwq1uFb",s,"user_F6fLZcJlH0SR10L1co4pm").then((function(e){console.log(e),alert("Takk for din bestilling!")})).catch((function(e){console.log(e),e.status>0?alert("Noko gjekk galt, prøv igjen eller kontakt oss via Facebook"):alert("Takk for din bestilling!")}))}},document.getElementById("small").addEventListener("change",(function(e){e.isTrigger?alert("not a human"):(document.getElementById("sendMail").disabled=!1,document.getElementById("sendMail").innerText="Send oss en mail med din bestilling")}))},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=function(e){this.status=e.status,this.text=e.responseText};t.EmailJSResponseStatus=r},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(){}return e.clearAll=function(e){e.classList.remove(this.PROGRESS),e.classList.remove(this.DONE),e.classList.remove(this.ERROR)},e.progressState=function(e){this.clearAll(e),e.classList.add(this.PROGRESS)},e.successState=function(e){e.classList.remove(this.PROGRESS),e.classList.add(this.DONE)},e.errorState=function(e){e.classList.remove(this.PROGRESS),e.classList.add(this.ERROR)},e.PROGRESS="emailjs-sending",e.DONE="emailjs-success",e.ERROR="emailjs-error",e}();t.UI=r}]);
+var email =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./js/email.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./js/email.js":
+/*!*********************!*\
+  !*** ./js/email.js ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var email = __webpack_require__(/*! emailjs-com */ "./node_modules/emailjs-com/source/index.js");
+
+document.getElementById("sendMail").onclick = function () {
+  run();
+};
+
+function run() {
+  var name = document.getElementById("name").value;
+  var address = document.getElementById("email").value;
+  var message = document.getElementById("message").value;
+  console.log('running');
+  if (!name || !address || !message || !document.getElementById('small').checked) return;
+  email.init('user_F6fLZcJlH0SR10L1co4pm');
+  var mailParams = {
+    from_name: name,
+    email: address,
+    subject: 'Ny bestilling fra: ' + name,
+    message_html: message
+  };
+  console.log('sending mail');
+  email.send('gmail', 'template_Ciwq1uFb', mailParams, 'user_F6fLZcJlH0SR10L1co4pm').then(function (res) {
+    console.log(res);
+    alert('Takk for din bestilling!');
+  })["catch"](function (e) {
+    console.log(e);
+
+    if (e.status > 0) {
+      alert('Noko gjekk galt, prøv igjen eller kontakt oss via Facebook');
+    } else {
+      alert('Takk for din bestilling!');
+    }
+  });
+}
+
+document.getElementById("small").addEventListener("change", function (e) {
+  if (e.isTrigger) {
+    alert('not a human');
+  } else {
+    document.getElementById("sendMail").disabled = false;
+    document.getElementById("sendMail").innerText = 'Send oss en mail med din bestilling';
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/emailjs-com/source/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/emailjs-com/source/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var EmailJSResponseStatus_1 = __webpack_require__(/*! ./models/EmailJSResponseStatus */ "./node_modules/emailjs-com/source/models/EmailJSResponseStatus.js");
+exports.EmailJSResponseStatus = EmailJSResponseStatus_1.EmailJSResponseStatus;
+var UI_1 = __webpack_require__(/*! ./services/ui/UI */ "./node_modules/emailjs-com/source/services/ui/UI.js");
+var _userID = null;
+var _origin = 'https://api.emailjs.com';
+function sendPost(url, data, headers) {
+    if (headers === void 0) { headers = {}; }
+    return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', function (event) {
+            var responseStatus = new EmailJSResponseStatus_1.EmailJSResponseStatus(event.target);
+            if (responseStatus.status === 200 || responseStatus.text === 'OK') {
+                resolve(responseStatus);
+            }
+            else {
+                reject(responseStatus);
+            }
+        });
+        xhr.addEventListener('error', function (event) {
+            reject(new EmailJSResponseStatus_1.EmailJSResponseStatus(event.target));
+        });
+        xhr.open('POST', url, true);
+        for (var key in headers) {
+            xhr.setRequestHeader(key, headers[key]);
+        }
+        xhr.send(data);
+    });
+}
+function appendGoogleCaptcha(templatePrams) {
+    var element = document.getElementById('g-recaptcha-response');
+    if (element && element.value) {
+        templatePrams['g-recaptcha-response'] = element.value;
+    }
+    element = null;
+    return templatePrams;
+}
+/**
+ * Initiation
+ * @param {string} userID - set the EmailJS user ID
+ * @param {string} origin - set the EmailJS origin
+ */
+function init(userID, origin) {
+    _userID = userID;
+    _origin = origin || 'https://api.emailjs.com';
+}
+exports.init = init;
+/**
+ * Send a template to the specific EmailJS service
+ * @param {string} serviceID - the EmailJS service ID
+ * @param {string} templateID - the EmailJS template ID
+ * @param {Object} templatePrams - the template params, what will be set to the EmailJS template
+ * @param {string} userID - the EmailJS user ID
+ * @returns {Promise<EmailJSResponseStatus>}
+ */
+function send(serviceID, templateID, templatePrams, userID) {
+    var params = {
+        lib_version: '2.4.1',
+        user_id: userID || _userID,
+        service_id: serviceID,
+        template_id: templateID,
+        template_params: appendGoogleCaptcha(templatePrams)
+    };
+    return sendPost(_origin + '/api/v1.0/email/send', JSON.stringify(params), {
+        'Content-type': 'application/json'
+    });
+}
+exports.send = send;
+/**
+ * Send a form the specific EmailJS service
+ * @param {string} serviceID - the EmailJS service ID
+ * @param {string} templateID - the EmailJS template ID
+ * @param {string | HTMLFormElement} form - the form element or selector
+ * @param {string} userID - the EmailJS user ID
+ * @returns {Promise<EmailJSResponseStatus>}
+ */
+function sendForm(serviceID, templateID, form, userID) {
+    if (typeof form === 'string') {
+        form = document.querySelector(form);
+    }
+    if (!form || form.nodeName !== 'FORM') {
+        throw 'Expected the HTML form element or the style selector of form';
+    }
+    UI_1.UI.progressState(form);
+    var formData = new FormData(form);
+    formData.append('lib_version', '2.4.1');
+    formData.append('service_id', serviceID);
+    formData.append('template_id', templateID);
+    formData.append('user_id', userID || _userID);
+    return sendPost(_origin + '/api/v1.0/email/send-form', formData)
+        .then(function (response) {
+        UI_1.UI.successState(form);
+        return response;
+    }, function (error) {
+        UI_1.UI.errorState(form);
+        return Promise.reject(error);
+    });
+}
+exports.sendForm = sendForm;
+exports.default = {
+    init: init,
+    send: send,
+    sendForm: sendForm
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/emailjs-com/source/models/EmailJSResponseStatus.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/emailjs-com/source/models/EmailJSResponseStatus.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var EmailJSResponseStatus = /** @class */ (function () {
+    function EmailJSResponseStatus(httpResponse) {
+        this.status = httpResponse.status;
+        this.text = httpResponse.responseText;
+    }
+    return EmailJSResponseStatus;
+}());
+exports.EmailJSResponseStatus = EmailJSResponseStatus;
+
+
+/***/ }),
+
+/***/ "./node_modules/emailjs-com/source/services/ui/UI.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/emailjs-com/source/services/ui/UI.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var UI = /** @class */ (function () {
+    function UI() {
+    }
+    UI.clearAll = function (form) {
+        form.classList.remove(this.PROGRESS);
+        form.classList.remove(this.DONE);
+        form.classList.remove(this.ERROR);
+    };
+    UI.progressState = function (form) {
+        this.clearAll(form);
+        form.classList.add(this.PROGRESS);
+    };
+    UI.successState = function (form) {
+        form.classList.remove(this.PROGRESS);
+        form.classList.add(this.DONE);
+    };
+    UI.errorState = function (form) {
+        form.classList.remove(this.PROGRESS);
+        form.classList.add(this.ERROR);
+    };
+    UI.PROGRESS = 'emailjs-sending';
+    UI.DONE = 'emailjs-success';
+    UI.ERROR = 'emailjs-error';
+    return UI;
+}());
+exports.UI = UI;
+
+
+/***/ })
+
+/******/ });
 //# sourceMappingURL=main.js.map
