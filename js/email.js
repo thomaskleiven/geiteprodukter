@@ -1,16 +1,16 @@
 const email = require('emailjs-com');
 
-document.getElementById("sendMail").onclick = function () { run(); };
 
-
-  function run() {
+function run() {
 
     const name = document.getElementById("name").value;
     const address = document.getElementById("email").value;
     const message = document.getElementById("message").value;
-    console.log('running')
-    
-    if (!name || !address || !message || !document.getElementById('small').checked) return; 
+    console.log('mailing')
+    if (!name || !address || !message || !document.getElementById('small').checked) {
+        document.getElementById('small').checked = false;
+        return;
+    } 
 
     email.init('user_F6fLZcJlH0SR10L1co4pm');
     const mailParams = {
@@ -31,6 +31,7 @@ document.getElementById("sendMail").onclick = function () { run(); };
             console.log(e);
             if (e.status > 0) {
                 alert('Noko gjekk galt, prøv igjen eller kontakt oss via Facebook') 
+                document.getElementById('small').checked = false;
             } else {
                 alert('Takk for din bestilling!')
             }
@@ -43,7 +44,7 @@ document.getElementById("small").addEventListener("change", function(e) {
     {
         alert ('not a human');
     } else {
-        document.getElementById("sendMail").disabled = false;
-        document.getElementById("sendMail").innerText = 'Send oss en mail med din bestilling';
+
+        run();
     }
 })
