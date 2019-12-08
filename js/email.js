@@ -22,8 +22,11 @@ document.getElementById("sendMail").onclick = function() {
           alert('Takk for din bestilling!')
       })
       .catch(e => { 
-          console.log(e);
-          alert('Noko gjekk galt, prøv igjen eller kontakt oss via Facebook') 
+            if (e.satus > 0) {
+                alert('Noko gjekk galt, prøv igjen eller kontakt oss via Facebook') 
+            } else {
+                alert('Takk for din bestilling!')
+            }
         });
 };
 

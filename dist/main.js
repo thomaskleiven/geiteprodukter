@@ -116,8 +116,11 @@ document.getElementById("sendMail").onclick = function () {
   emailjs_com__WEBPACK_IMPORTED_MODULE_0__["send"]('gmail', 'template_Ciwq1uFb', mailParams, 'user_F6fLZcJlH0SR10L1co4pm').then(function (res) {
     alert('Takk for din bestilling!');
   })["catch"](function (e) {
-    console.log(e);
-    alert('Noko gjekk galt, prøv igjen eller kontakt oss via Facebook');
+    if (e.satus > 0) {
+      alert('Noko gjekk galt, prøv igjen eller kontakt oss via Facebook');
+    } else {
+      alert('Takk for din bestilling!');
+    }
   });
 };
 
