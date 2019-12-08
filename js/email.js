@@ -15,9 +15,6 @@ document.getElementById("sendMail").addEventListener("click", function() {
       message_html: message
     }
 
-    document.getElementById('popUpMessage').click();
-    return;
-
     email.send('gmail', 'template_Ciwq1uFb', mailParams, 'user_F6fLZcJlH0SR10L1co4pm')
       .then(res => {
         document.getElementById('popUpMessage').click();

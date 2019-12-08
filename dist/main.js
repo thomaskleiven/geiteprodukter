@@ -111,8 +111,6 @@ document.getElementById("sendMail").addEventListener("click", function () {
     subject: 'Ny bestilling fra: ' + name,
     message_html: message
   };
-  document.getElementById('popUpMessage').click();
-  return;
   emailjs_com__WEBPACK_IMPORTED_MODULE_0__["send"]('gmail', 'template_Ciwq1uFb', mailParams, 'user_F6fLZcJlH0SR10L1co4pm').then(function (res) {
     document.getElementById('popUpMessage').click();
   })["catch"](function (e) {
