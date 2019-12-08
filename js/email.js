@@ -37,6 +37,7 @@ document.getElementById("small").addEventListener("change", function(e) {
     {
         alert ('not a human');
     } else {
+        document.getElementById("sendMail").disabled = false;
         document.getElementById("sendMail").innerText = 'Send oss en mail med din bestilling';
     }
 })
