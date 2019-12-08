@@ -2,9 +2,8 @@
     max-height: 85vh;
     background-image: linear-gradient(
         to right bottom,
-        rgba($color-primary-light, 0.8),
-        rgba($color-primary-dark, 0.8)),
-    url(../img/hero-small.jpg);
+        rgba($color-primary-light, 0.2),
+        rgba($color-primary-dark, 0.2));
     background-size: cover;
     background-position: top;
     position: relative;
