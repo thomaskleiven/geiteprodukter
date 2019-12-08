@@ -19,9 +19,9 @@ document.getElementById("sendMail").addEventListener("click", function() {
 
     email.send('gmail', 'template_Ciwq1uFb', mailParams, 'user_F6fLZcJlH0SR10L1co4pm')
       .then(res => {
-        document.getElementById('popUpMessage').click();
+          alert('Takk for din bestilling!')
       })
-      .catch(e => console.log(e));
+      .catch(e => alert('Noko gjekk galt, prøv igjen eller kontakt oss via Facebook'));
 });
 
 document.getElementById("small").addEventListener("change", function(e) {
