@@ -99,11 +99,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var emailjs_com__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! emailjs-com */ "./node_modules/emailjs-com/source/index.js");
 /* harmony import */ var emailjs_com__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(emailjs_com__WEBPACK_IMPORTED_MODULE_0__);
 
-document.getElementById("sendMail").addEventListener("click", function () {
+
+document.getElementById("sendMail").onclick = function () {
   var name = document.getElementById("name").value;
   var address = document.getElementById("email").value;
   var message = document.getElementById("message").value;
-  if (!name || !address || !message) return;
+  if (!name || !address || !message || !document.getElementById('small').checked) return;
   emailjs_com__WEBPACK_IMPORTED_MODULE_0__["init"]('user_F6fLZcJlH0SR10L1co4pm');
   var mailParams = {
     from_name: name,
@@ -118,12 +119,12 @@ document.getElementById("sendMail").addEventListener("click", function () {
     console.log(e);
     alert('Noko gjekk galt, prøv igjen eller kontakt oss via Facebook');
   });
-});
+};
+
 document.getElementById("small").addEventListener("change", function (e) {
   if (e.isTrigger) {
     alert('not a human');
   } else {
-    document.getElementById("sendMail").disabled = false;
     document.getElementById("sendMail").innerText = 'Send oss en mail med din bestilling';
   }
 });
