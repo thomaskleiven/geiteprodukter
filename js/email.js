@@ -21,7 +21,10 @@ document.getElementById("sendMail").addEventListener("click", function() {
       .then(res => {
           alert('Takk for din bestilling!')
       })
-      .catch(e => alert('Noko gjekk galt, prøv igjen eller kontakt oss via Facebook'));
+      .catch(e => { 
+          console.log(e);
+          alert('Noko gjekk galt, prøv igjen eller kontakt oss via Facebook') 
+        });
 });
 
 document.getElementById("small").addEventListener("change", function(e) {
