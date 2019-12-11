@@ -28,7 +28,7 @@
 
     @media only screen and (max-width: 56.25em),
             only screen and (hover: none) {
-                display: none;
+                height: 100% !important;
         }
 
     @include respond(phone) {
