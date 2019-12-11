@@ -28,10 +28,7 @@
 
     @media only screen and (max-width: 56.25em),
             only screen and (hover: none) {
-                background-image: linear-gradient(
-                    to right bottom,
-                    rgba($color-primary-light, 0.2),
-                    rgba($color-primary-dark, 0.2))
+                display: none;
         }
 
     @include respond(phone) {
