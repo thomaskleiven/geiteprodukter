@@ -809,7 +809,7 @@ body {
       background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.2), rgba(40, 180, 133, 0.2)), url(../img/gard.jpg); } }
   @media only screen and (max-width: 56.25em), only screen and (hover: none) {
     .header {
-      height: 100% !important; } }
+      height: 40vh !important; } }
   @media only screen and (max-width: 37.5em) {
     .header {
       -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
