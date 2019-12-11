@@ -31,8 +31,7 @@
                 background-image: linear-gradient(
                     to right bottom,
                     rgba($color-primary-light, 0.2),
-                    rgba($color-primary-dark, 0.2)),
-                url(../img/gard_small.jpg);
+                    rgba($color-primary-dark, 0.2))
         }
 
     @include respond(phone) {
