@@ -30,6 +30,7 @@
             only screen and (hover: none) {
                 min-height: -webkit-fill-available;
                 max-height: 200px;
+                display: none;
         }
 
     @include respond(phone) {
