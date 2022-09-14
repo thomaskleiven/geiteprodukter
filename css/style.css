@@ -807,11 +807,6 @@ body {
   @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em), only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), only screen and (min-width: 125em) {
     .header {
       background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.2), rgba(40, 180, 133, 0.2)), url(../img/gard.jpg); } }
-  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
-    .header {
-      min-height: -webkit-fill-available;
-      max-height: 200px;
-      display: none; } }
   @media only screen and (max-width: 37.5em) {
     .header {
       -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
@@ -828,6 +823,10 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center; }
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+    .header {
+      min-height: -webkit-fill-available;
+      max-height: 100vh; } }
 
 .navigation__checkbox {
   display: none; }

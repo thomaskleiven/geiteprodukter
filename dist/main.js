@@ -150,8 +150,9 @@ document.getElementById("small").addEventListener("change", function (e) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EmailJSResponseStatus = exports.sendForm = exports.send = exports.init = void 0;
 var EmailJSResponseStatus_1 = __webpack_require__(/*! ./models/EmailJSResponseStatus */ "./node_modules/emailjs-com/source/models/EmailJSResponseStatus.js");
-exports.EmailJSResponseStatus = EmailJSResponseStatus_1.EmailJSResponseStatus;
+Object.defineProperty(exports, "EmailJSResponseStatus", { enumerable: true, get: function () { return EmailJSResponseStatus_1.EmailJSResponseStatus; } });
 var UI_1 = __webpack_require__(/*! ./services/ui/UI */ "./node_modules/emailjs-com/source/services/ui/UI.js");
 var _userID = null;
 var _origin = 'https://api.emailjs.com';
@@ -179,12 +180,18 @@ function sendPost(url, data, headers) {
     });
 }
 function appendGoogleCaptcha(templatePrams) {
-    var element = document.getElementById('g-recaptcha-response');
+    var element = document && document.getElementById('g-recaptcha-response');
     if (element && element.value) {
         templatePrams['g-recaptcha-response'] = element.value;
     }
     element = null;
     return templatePrams;
+}
+function fixIdSelector(selector) {
+    if (selector[0] !== '#') {
+        return '#' + selector;
+    }
+    return selector;
 }
 /**
  * Initiation
@@ -206,7 +213,7 @@ exports.init = init;
  */
 function send(serviceID, templateID, templatePrams, userID) {
     var params = {
-        lib_version: '2.4.1',
+        lib_version: '2.6.3',
         user_id: userID || _userID,
         service_id: serviceID,
         template_id: templateID,
@@ -227,14 +234,14 @@ exports.send = send;
  */
 function sendForm(serviceID, templateID, form, userID) {
     if (typeof form === 'string') {
-        form = document.querySelector(form);
+        form = document.querySelector(fixIdSelector(form));
     }
     if (!form || form.nodeName !== 'FORM') {
         throw 'Expected the HTML form element or the style selector of form';
     }
     UI_1.UI.progressState(form);
     var formData = new FormData(form);
-    formData.append('lib_version', '2.4.1');
+    formData.append('lib_version', '2.6.3');
     formData.append('service_id', serviceID);
     formData.append('template_id', templateID);
     formData.append('user_id', userID || _userID);
@@ -267,6 +274,7 @@ exports.default = {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EmailJSResponseStatus = void 0;
 var EmailJSResponseStatus = /** @class */ (function () {
     function EmailJSResponseStatus(httpResponse) {
         this.status = httpResponse.status;
@@ -289,6 +297,7 @@ exports.EmailJSResponseStatus = EmailJSResponseStatus;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.UI = void 0;
 var UI = /** @class */ (function () {
     function UI() {
     }

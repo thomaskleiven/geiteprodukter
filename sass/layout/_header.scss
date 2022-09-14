@@ -26,13 +26,6 @@
         url(../img/gard.jpg);
     }
 
-    @media only screen and (max-width: 56.25em),
-            only screen and (hover: none) {
-                min-height: -webkit-fill-available;
-                max-height: 200px;
-                display: none;
-        }
-
     @include respond(phone) {
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
@@ -55,4 +48,10 @@
         transform: translate(-50%, -50%);
         text-align: center;
     }
+
+    @media only screen and (max-width: 56.25em),
+    only screen and (hover: none) {
+        min-height: -webkit-fill-available;
+        max-height: 100vh;
+    } 
 }
